@@ -14,7 +14,7 @@ to print it out to make sure it worked,
 
 ## create repository on GitHub
 
-make a new repository, and copy the URL given  
+(must do this on the GitHub website) make a new repository, and copy the URL given  
 should be something like  
 `https://github.com/UserName/RepositoryName.git`
 
@@ -55,26 +55,24 @@ and last, push your commit back to the remote repository's main branch
 # Branches
 
 the main reason for branches is collaboration, but it's good to practice on solo projects  
-something called HEAD keeps track of which local branch you're on (you will see HEAD mentioned in some documentation)
+something called HEAD keeps track of which local branch you're on  
+generally what we want are **tracking branches**, which keep track of which remote branch they correspond to
 
-## creating branches and switching to them
+## using local branches
 
 to see the branches in your local repository, use  
 `git branch`
 
-to create a new branch  
-`git branch branchname`
+to create a new branch and switch to it (*basebranch* can be omitted to use current branch):  
+`git branch branchname basebranch`  
+`git switch branchname`  
+OR  
+`git checkout -b branchname basebranch`
 
-to switch to a branch  
-`git checkout branchname`
+## merging local branches
 
-to create a new branch and switch to it in one command,  
-`git checkout -b branchname`
-
-## merging a branch
-
-make your commits first and hopefully you tested your changes...  
-then switch to the branch you are merging into, and merge the other branch:  
+(after you've made your commits)  
+switch to the branch you are merging into, and merge the other branch:  
 `git merge branchname`  
 
 if main had no commits to it after the branch was created, it is an easy **fast-forward** merge  
@@ -88,6 +86,33 @@ to fix the merge conflict you open the files and see where the differences are; 
 
 you can also try to resolve conflicts with a merge tool  
 `git mergetool`
+
+if you're not ready to deal with merge conflicts, you can cancel the merge:
+`git merge --abort`
+
+if you merged your branch and don't need it anymore, you can delete it with  
+`git branch -d branchname`
+
+## interacting with remote branches
+
+since we generally want tracking branches, check which of your branches are tracking using  
+`git branch -vv`  
+(there will be something like *\[origin/branchname]* next to tracking branches; you should have some if you cloned the remote repository)  
+
+if you have a local branch that isn't set to track the remote branch it should be in sync with, use  
+`git branch -u origin/branchname`
+
+to update your local commit list for remote branches  
+`git fetch origin`  
+but to update your local branch's files to match you must merge them (which can have conflicts)  
+`
+OR combine these steps with a pull
+`git pull`
+
+to push your changes on a branch back to the remote branch of the same name  
+`git push origin branchname`  
+just like we did for our initial commit, or to push to a different branch name
+`git push origin localbranchname:remotebranchname`
 
 # Commit History
 
