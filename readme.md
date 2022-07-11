@@ -18,7 +18,7 @@ to print it out to make sure it worked,
 should be something like  
 `https://github.com/UserName/RepositoryName.git`
 
-## "clone" the remote (GitHub) repository (make a copy of it on your computer)
+## clone the remote (GitHub) repository (grabs the main branch)
 
 open PowerShell in the soon-to-be parent folder of where you want your local repository placed, then  
 `git clone https://github.com/UserName/RepositoryName.git RepositoryName`
@@ -97,15 +97,19 @@ if you merged your branch and don't need it anymore, you can delete it with
 
 since we generally want tracking branches, check which of your branches are tracking using  
 `git branch -vv`  
-(there will be something like *\[origin/branchname]* next to tracking branches; you should have some if you cloned the remote repository)  
+(there will be something like *\[origin/branchname]* next to tracking branches; you should have one if you cloned the remote repository)  
+if you only have one remote repository, grab another (and set it up for tracking) with  
+`git checkout branchname`  
+OR  
+`git checkout -t origin/branchname`
 
 if you have a local branch that isn't set to track the remote branch it should be in sync with, use  
 `git branch -u origin/branchname`
 
 to update your local commit list for remote branches  
 `git fetch origin`  
-but to update your local branch's files to match you must merge them (which can have conflicts)  
-`
+if your local branch's files are not up to date, you must merge them (which can have conflicts)  
+
 OR combine these steps with a pull
 `git pull`
 
