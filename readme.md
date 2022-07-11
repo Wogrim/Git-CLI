@@ -93,11 +93,11 @@ if you're not ready to deal with merge conflicts, you can cancel the merge:
 if you merged your branch and don't need it anymore, you can delete it with  
 `git branch -d branchname`
 
-## interacting with remote branches
+## using tracking branches
 
 since we generally want tracking branches, check which of your branches are tracking using  
 `git branch -vv`  
-(there will be something like *\[origin/branchname]* next to tracking branches; you should have some if you cloned the remote repository)  
+(there will be something like *\[origin/branchname]* next to tracking branches; you should have some if you cloned the remote repository or with a checkout)  
 
 if you have a local branch that isn't set to track the remote branch it should be in sync with, use  
 `git branch -u origin/branchname`
@@ -105,12 +105,12 @@ if you have a local branch that isn't set to track the remote branch it should b
 to update your local commit list for remote branches  
 `git fetch origin`  
 but to update your local branch's files to match you must merge them (which can have conflicts)  
-`
+`git merge origin/branchname`  
 OR combine these steps with a pull
-`git pull`
+`git pull origin branchname`
 
-to push your changes on a branch back to the remote branch of the same name  
-`git push origin branchname`  
+to push current branch back to the remote branch of the same name  
+`git push origin`  
 just like we did for our initial commit, or to push to a different branch name
 `git push origin localbranchname:remotebranchname`
 
