@@ -69,8 +69,8 @@ to create a new branch and switch to it (*basebranch* can be omitted to use curr
 OR  
 `git checkout -b branchname basebranch`
 
-if you have uncommitted changes to a file which you want to revert (so you can do other things),  
-`git revert .`
+if you have uncommitted changes to a file which you want to undo:    
+`git checkout HEAD -- filename`
 
 ## merging local branches
 
@@ -113,7 +113,7 @@ to update your local commit list for remote branches
 `git fetch origin`  
 if your local branch's files are not up to date, you must merge them or rebase (which can have conflicts)  
 *TODO: GIT MERGE*  
-`git rebase origin/branchname` 
+`git rebase origin/branchname`  
 OR combine these steps with a pull (it will merge or rebase depending on settings)  
 `git pull`
 
