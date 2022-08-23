@@ -50,7 +50,10 @@ then to make the commit do
 `git commit -m "initial commit"`
 
 and last, push your commit back to the remote repository's main branch  
-`git push origin main`
+`git push origin main`  
+if you did `git init` instead of `git clone` to get started, use  
+`git push -u origin main`  
+to set up the local branch as a remote tracking branch
 
 # Branches
 
